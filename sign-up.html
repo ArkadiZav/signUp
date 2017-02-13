@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Book Keeper : sign up </title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <form>
+      <div class = "field"> Username: </div>
+      <div class = "input"> <input type = 'text' placeholder = "5 characters or more" id = 'username'/> </div>
+      <div class = "field"> Email: </div>
+      <div class = "input"> <input type = "email" placeholder = "mrarkadi@gmail.com"> </div>
+      <div class = "field"> Password: </div>
+      <div class = "input"> <input type = 'password' id = "password"/> </div>
+      <div class = "field"> Repeat password: </div>
+      <div class = "input"> <input type = 'password' id = "repeatedpassword"/> </div>
+      <div class = "field"> Telephone: </div>
+      <div class = "input"> <input type = 'number' id = "telephone"/> </div>
+      <div class = "field"> Country: </div>
+      <div class = "input">
+        <select id = "country">
+          <option value = "Israel"> Israel </option>
+          <option value = "USA"> USA </option>
+          <option value = "England"> England </option>
+          <option value = "Germany"> Germany </option>
+        </select>
+      </div>
+      <button type = "button" onclick = "clickHandler();">Sign up</button>
+      <div id = "msgusername"></div>
+      <div id = "msgpassword"></div>
+      <div id = "msgrepeatpassword"></div>
+      <div id = "msgcountry"></div>
+      <div id = "msgtelephone"></div>
+      <div id = "msgpass"></div>
+    </form>
+    <script>
+      var clickHandler = function() {
+        // flag variable to check if there are no errors
+        var flag = true;
+        // username handler
+        var username = document.getElementById("username").value;
+        if (username.length < 5) {
+          document.getElementById("msgusername").innerHTML = "The supplied username is too short, try again using 5 or more characters";
+          document.getElementById('msgusername').style.color = "red";
+          flag = false;
+        }
+        else {
+          document.getElementById("msgusername").innerHTML = "";
+        }
+        // password handler
+        var password = document.getElementById("password").value;
+        if (password.length < 6) {
+          document.getElementById("msgpassword").innerHTML = "The supplied password is too short, try again using 6 or more characters";
+          document.getElementById('msgpassword').style.color = "red";
+          flag = false;
+        }
+        else {
+          document.getElementById("msgpassword").innerHTML = "";
+        }
+        // repeat password handler
+        var repeatedPassword = document.getElementById("repeatedpassword").value;
+        if (repeatedPassword != password) {
+          document.getElementById("msgrepeatpassword").innerHTML = "Passwords should be the same";
+          document.getElementById('msgrepeatpassword').style.color = "red";
+          flag = false;
+        }
+        else {
+          document.getElementById("msgrepeatpassword").innerHTML = "";
+        }
+        // country handler
+        var country = document.getElementById("country").value;
+        if (country != "Israel" && country != "USA") {
+          document.getElementById("msgcountry").innerHTML = "Valid countries are either Israel or USA";
+          document.getElementById('msgcountry').style.color = "red";
+          flag = false;
+        }
+        else {
+          document.getElementById("msgcountry").innerHTML = "";
+        }
+        // telephone handler
+        var telephone = document.getElementById("telephone").value;
+        if (telephone.length > 14) {
+          document.getElementById("msgtelephone").innerHTML = "Telephone number should be shorter than 15 digits";
+          document.getElementById('msgtelephone').style.color = "red";
+          flag = false;
+        }
+        else {
+          document.getElementById("msgtelephone").innerHTML = "";
+        }
+
+        if (flag) {
+          document.getElementById("msgpass").innerHTML = "Thank you " + username + "!";
+          document.getElementById('msgpass').style.color = "green";          
+        }
+      };
+    </script>
+  </body>
+</html>

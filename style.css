@@ -1,0 +1,15 @@
+form {
+  width: 100%;
+}
+
+.field {
+  float: left;
+  width: 8%;
+  display: inline;
+}
+
+.input {
+  float: left;
+  width: 92%;
+  display: inline;
+}
